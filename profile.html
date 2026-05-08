@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MusaQuest - Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Literata:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "tertiary-container":"#792d26","surface-variant":"#e7e2d8","surface-tint":"#306576",
+      "tertiary":"#5b1712","on-secondary-container":"#774a01","surface-container-high":"#ece8de",
+      "surface-dim":"#dedad0","surface-container":"#f2ede3","secondary-fixed-dim":"#fabb6c",
+      "primary-fixed":"#b6ebfe","tertiary-fixed-dim":"#ffb4aa","on-tertiary-fixed-variant":"#7a2e27",
+      "error-container":"#ffdad6","tertiary-fixed":"#ffdad5","on-tertiary-fixed":"#3f0303",
+      "surface":"#fef9ef","on-tertiary-container":"#ff988b","secondary":"#83540c","error":"#ba1a1a",
+      "inverse-surface":"#32302a","surface-bright":"#fef9ef","primary-container":"#0f4c5c",
+      "inverse-on-surface":"#f5f0e6","on-tertiary":"#ffffff","secondary-container":"#fdbd6f",
+      "on-surface-variant":"#40484b","outline-variant":"#c0c8cb","on-secondary-fixed-variant":"#653e00",
+      "on-primary":"#ffffff","on-error":"#ffffff","on-error-container":"#93000a",
+      "primary-fixed-dim":"#9acee1","on-primary-fixed":"#001f28","outline":"#70787c",
+      "on-primary-fixed-variant":"#114d5d","on-secondary-fixed":"#2a1700","on-secondary":"#ffffff",
+      "background":"#fef9ef","on-surface":"#1d1c16","primary":"#003441",
+      "on-primary-container":"#87bbce","secondary-fixed":"#ffddb8","surface-container-low":"#f8f3e9",
+      "inverse-primary":"#9acee1","surface-container-highest":"#e7e2d8","on-background":"#1d1c16",
+      "surface-container-lowest":"#ffffff"
+    },
+    borderRadius: { "DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px" },
+    spacing: { "lg":"40px","xl":"64px","base":"8px","sm":"12px","container-max":"1200px","xs":"4px","md":"24px" },
+    fontFamily: {
+      "arabic-display":["Amiri"],"label-caps":["Nunito Sans"],"body-lg":["Nunito Sans"],
+      "headline-md":["Literata"],"body-md":["Nunito Sans"],"display-lg":["Literata"]
+    },
+    fontSize: {
+      "label-caps":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],
+      "body-lg":["16px",{lineHeight:"24px"}],"body-md":["14px",{lineHeight:"20px"}],
+      "headline-md":["32px",{lineHeight:"40px",fontWeight:"600"}],
+      "display-lg":["48px",{lineHeight:"56px",fontWeight:"700"}]
+    }
+  }}
+};
+</script>
+<style>
+  body { min-height: max(884px, 100dvh); }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+  .drop-cap::first-letter {
+    font-family: 'Literata', serif; font-weight: 700; font-size: 4.5rem;
+    float: left; line-height: 0.85; padding: 0.4rem 0.8rem 0 0; color: #003441;
+  }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen pb-[100px] md:pb-0 selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+
+<header class="bg-surface docked full-width top-0 flat no shadows sticky z-40">
+<div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-sm group">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden border-2 border-secondary-container p-[2px] relative flex-shrink-0">
+<div class="absolute inset-0 rounded-full border-[3px] border-tertiary-container border-t-transparent border-l-transparent transform rotate-45 z-10"></div>
+<img alt="Child profile" class="w-full h-full rounded-full object-cover relative z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkaJWhSRS19h2gwOd7O46EGkN0k6bhg4ir6MNXhrqX2wWu1TnZxMQNzhCr562VAwolVjpClrg5FTv2tfi9DohmY0IkW5i4IAT0_Yx8j-4TS4VnP5OAlK6HRMaN_VMAUPFIYnzZdXsHSxo3xvmMc9i-d01p9OMd05-EW3FvhT2FObB8-tLJJ0EyArIL81RC-UinKywHphgLxMvsuRGYl7UOI5bPFIrwii6b0J6UjM_rpux350MkHNNRrwlgAWB01fB8GbrwF2x_agU"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">MusaQuest</span>
+</a>
+<nav class="hidden md:flex items-center gap-sm">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="index.html">
+<span class="material-symbols-outlined" >home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="stories.html">
+<span class="material-symbols-outlined" >menu_book</span>
+<span class="font-label-caps text-label-caps">Stories</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >auto_stories</span>
+<span class="font-label-caps text-label-caps">Verses</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >self_improvement</span>
+<span class="font-label-caps text-label-caps">Reflect</span>
+</a>
+<a class="text-primary font-bold bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="profile.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<div class="hidden md:flex text-on-surface-variant font-label-caps text-label-caps bg-surface-container px-4 py-2 rounded-full items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>14 Safar 1446
+</div>
+</div>
+</header>
+
+<main class="max-w-container-max mx-auto px-md py-lg flex flex-col gap-xl">
+
+<!-- Hero rank -->
+<section class="bg-surface-container rounded-xl p-lg md:p-xl relative overflow-hidden flex flex-col items-center gap-md border-2 border-secondary-fixed shadow-[0_8px_30px_rgba(15,76,92,0.04)]">
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-secondary-fixed opacity-40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary-fixed-dim opacity-20 rounded-full blur-3xl pointer-events-none"></div>
+
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-primary-container flex items-center justify-center relative shrink-0 z-10 shadow-[0_10px_25px_rgba(15,76,92,0.15)] border-4 border-surface">
+<span class="material-symbols-outlined text-[64px] md:text-[80px] text-secondary-container drop-shadow-sm" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+
+<div class="text-center z-10">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.1em]">Current Rank</p>
+<h1 class="font-display-lg text-display-lg text-primary mb-md">The Traveler</h1>
+<div class="flex items-center justify-center gap-lg mb-md">
+<div class="text-center">
+<p class="font-display-lg text-[32px] text-primary font-bold leading-none mb-1">12</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Level</p>
+</div>
+<div class="w-px h-12 bg-surface-variant"></div>
+<div class="text-center">
+<p class="font-display-lg text-[32px] text-primary font-bold leading-none mb-1">2,450</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Total XP</p>
+</div>
+<div class="w-px h-12 bg-surface-variant"></div>
+<div class="text-center">
+<p class="font-display-lg text-[32px] text-primary font-bold leading-none mb-1">2</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Chapters</p>
+</div>
+</div>
+<div class="max-w-md mx-auto">
+<div class="flex items-center justify-between mb-2 px-2">
+<span class="font-label-caps text-label-caps text-primary font-bold">Progress to Wanderer</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2,450 / 3,000</span>
+</div>
+<div class="h-5 w-full bg-surface-variant rounded-full overflow-hidden p-[2px]">
+<div class="h-full bg-tertiary-container rounded-full relative overflow-hidden" style="width: 82%;">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full transform -translate-x-full animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant mt-sm">Only 550 XP until the next milestone.</p>
+</div>
+</div>
+</section>
+
+<!-- Rank Ladder -->
+<section class="flex flex-col gap-md">
+<h2 class="font-headline-md text-[28px] text-primary flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+The Path of Ranks
+</h2>
+
+<div class="bg-surface-container rounded-xl p-lg flex flex-col gap-md border border-surface-variant">
+
+<!-- Rank: Seeker (completed) -->
+<div class="flex items-center gap-md p-md rounded-lg bg-surface border border-tertiary-container/30 opacity-80">
+<div class="w-14 h-14 rounded-full bg-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<p class="font-headline-md text-[20px] text-primary font-bold">The Seeker</p>
+<span class="font-label-caps text-label-caps text-tertiary-container bg-tertiary-container/10 px-2 py-0.5 rounded-full">Achieved</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Levels 1-5. The first steps of curiosity.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">0-500 XP</span>
+</div>
+
+<!-- Rank: Scholar (completed) -->
+<div class="flex items-center gap-md p-md rounded-lg bg-surface border border-tertiary-container/30 opacity-80">
+<div class="w-14 h-14 rounded-full bg-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<p class="font-headline-md text-[20px] text-primary font-bold">The Scholar of Light</p>
+<span class="font-label-caps text-label-caps text-tertiary-container bg-tertiary-container/10 px-2 py-0.5 rounded-full">Achieved</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Levels 6-10. Learning grows steady and bright.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">500-2,000 XP</span>
+</div>
+
+<!-- Rank: Traveler (current) -->
+<div class="flex items-center gap-md p-md rounded-lg bg-secondary-fixed/30 border-2 border-secondary-container shadow-[0_4px_20px_rgba(253,189,111,0.2)]">
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<p class="font-headline-md text-[20px] text-primary font-bold">The Traveler</p>
+<span class="font-label-caps text-label-caps text-on-secondary-container bg-secondary-container px-2 py-0.5 rounded-full">Current</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Levels 11-15. Walking through new lands and stories.</p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold">2,000-3,000 XP</span>
+</div>
+
+<!-- Rank: Wanderer (locked) -->
+<div class="flex items-center gap-md p-md rounded-lg bg-surface border border-surface-variant opacity-50">
+<div class="w-14 h-14 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[20px] text-primary font-bold">The Wanderer</p>
+<p class="font-body-md text-sm text-on-surface-variant">Levels 16-20. The path becomes wider, the mountains taller.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">3,000-5,000 XP</span>
+</div>
+
+<!-- Rank: Sage (locked) -->
+<div class="flex items-center gap-md p-md rounded-lg bg-surface border border-surface-variant opacity-50">
+<div class="w-14 h-14 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[20px] text-primary font-bold">The Sage</p>
+<p class="font-body-md text-sm text-on-surface-variant">Levels 21-25. Wisdom is shared, not just earned.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">5,000-8,000 XP</span>
+</div>
+
+<!-- Rank: Pilgrim (locked) -->
+<div class="flex items-center gap-md p-md rounded-lg bg-surface border border-surface-variant opacity-50">
+<div class="w-14 h-14 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<div class="flex-1">
+<p class="font-headline-md text-[20px] text-primary font-bold">The Pilgrim</p>
+<p class="font-body-md text-sm text-on-surface-variant">Levels 26+. The final ascent. Knowledge becomes light.</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">8,000+ XP</span>
+</div>
+
+</div>
+</section>
+
+<!-- Recent Activity & Badges Bento -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+
+<section class="lg:col-span-7 flex flex-col gap-md">
+<h2 class="font-headline-md text-[24px] text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">history</span>
+Recent Journey
+</h2>
+<div class="bg-surface-container rounded-xl p-md flex flex-col gap-sm border border-surface-variant">
+
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-surface transition-colors">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface font-bold">Completed: Reflect on Patience</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Today, 9:14 AM</p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold">+30 XP</span>
+</div>
+
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-surface transition-colors">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container text-[20px]">menu_book</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface font-bold">Started: The Journey to Midian</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Yesterday, 7:30 PM</p>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">+10 XP</span>
+</div>
+
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-surface transition-colors">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface font-bold">Earned badge: Two Chapters Complete</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">2 days ago</p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold">+200 XP</span>
+</div>
+
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-surface transition-colors">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface font-bold">Finished Chapter 2: The Palace Walls</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">2 days ago</p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold">+150 XP</span>
+</div>
+
+<div class="flex items-center gap-md p-sm rounded-lg hover:bg-surface transition-colors">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface font-bold">Reached Level 12</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">3 days ago</p>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-bold">Milestone</span>
+</div>
+
+</div>
+</section>
+
+<section class="lg:col-span-5 flex flex-col gap-md">
+<h2 class="font-headline-md text-[24px] text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+Badges Earned
+</h2>
+<div class="grid grid-cols-3 gap-sm">
+
+<div class="aspect-square bg-surface-container rounded-xl flex flex-col items-center justify-center p-sm border-2 border-tertiary-container/30 hover:scale-105 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-tertiary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<p class="font-label-caps text-label-caps text-primary font-bold mt-1 text-center">First Steps</p>
+</div>
+
+<div class="aspect-square bg-surface-container rounded-xl flex flex-col items-center justify-center p-sm border-2 border-tertiary-container/30 hover:scale-105 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-tertiary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<p class="font-label-caps text-label-caps text-primary font-bold mt-1 text-center">3 Day Streak</p>
+</div>
+
+<div class="aspect-square bg-surface-container rounded-xl flex flex-col items-center justify-center p-sm border-2 border-tertiary-container/30 hover:scale-105 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-tertiary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<p class="font-label-caps text-label-caps text-primary font-bold mt-1 text-center">Two Chapters</p>
+</div>
+
+<div class="aspect-square bg-surface border-2 border-dashed border-surface-variant rounded-xl flex flex-col items-center justify-center p-sm opacity-50">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]">lock</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 text-center">7 Day Streak</p>
+</div>
+
+<div class="aspect-square bg-surface border-2 border-dashed border-surface-variant rounded-xl flex flex-col items-center justify-center p-sm opacity-50">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]">lock</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 text-center">Five Chapters</p>
+</div>
+
+<div class="aspect-square bg-surface border-2 border-dashed border-surface-variant rounded-xl flex flex-col items-center justify-center p-sm opacity-50">
+<span class="material-symbols-outlined text-on-surface-variant text-[40px]">lock</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-1 text-center">First Reflection</p>
+</div>
+
+</div>
+</section>
+
+</div>
+
+</main>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-md pt-base bg-surface-container shadow-[0_-4px_20px_rgba(15,76,92,0.08)] rounded-t-[2rem]">
+
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="index.html">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="stories.html">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span class="text-label-caps font-label-caps">Stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="text-label-caps font-label-caps">Verses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">self_improvement</span>
+<span class="text-label-caps font-label-caps">Reflect</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-5 py-2 scale-90 transition-all duration-300 ease-out shadow-sm" href="profile.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</a>
+</nav>
+</body></html>

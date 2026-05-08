@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MusaQuest - All Stories</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Literata:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "tertiary-container":"#792d26","surface-variant":"#e7e2d8","surface-tint":"#306576",
+      "tertiary":"#5b1712","on-secondary-container":"#774a01","surface-container-high":"#ece8de",
+      "surface-dim":"#dedad0","surface-container":"#f2ede3","secondary-fixed-dim":"#fabb6c",
+      "primary-fixed":"#b6ebfe","tertiary-fixed-dim":"#ffb4aa","on-tertiary-fixed-variant":"#7a2e27",
+      "error-container":"#ffdad6","tertiary-fixed":"#ffdad5","on-tertiary-fixed":"#3f0303",
+      "surface":"#fef9ef","on-tertiary-container":"#ff988b","secondary":"#83540c","error":"#ba1a1a",
+      "inverse-surface":"#32302a","surface-bright":"#fef9ef","primary-container":"#0f4c5c",
+      "inverse-on-surface":"#f5f0e6","on-tertiary":"#ffffff","secondary-container":"#fdbd6f",
+      "on-surface-variant":"#40484b","outline-variant":"#c0c8cb","on-secondary-fixed-variant":"#653e00",
+      "on-primary":"#ffffff","on-error":"#ffffff","on-error-container":"#93000a",
+      "primary-fixed-dim":"#9acee1","on-primary-fixed":"#001f28","outline":"#70787c",
+      "on-primary-fixed-variant":"#114d5d","on-secondary-fixed":"#2a1700","on-secondary":"#ffffff",
+      "background":"#fef9ef","on-surface":"#1d1c16","primary":"#003441",
+      "on-primary-container":"#87bbce","secondary-fixed":"#ffddb8","surface-container-low":"#f8f3e9",
+      "inverse-primary":"#9acee1","surface-container-highest":"#e7e2d8","on-background":"#1d1c16",
+      "surface-container-lowest":"#ffffff"
+    },
+    borderRadius: { "DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px" },
+    spacing: { "lg":"40px","xl":"64px","base":"8px","sm":"12px","container-max":"1200px","xs":"4px","md":"24px" },
+    fontFamily: {
+      "arabic-display":["Amiri"],"label-caps":["Nunito Sans"],"body-lg":["Nunito Sans"],
+      "headline-md":["Literata"],"body-md":["Nunito Sans"],"display-lg":["Literata"]
+    },
+    fontSize: {
+      "label-caps":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],
+      "body-lg":["16px",{lineHeight:"24px"}],"body-md":["14px",{lineHeight:"20px"}],
+      "headline-md":["32px",{lineHeight:"40px",fontWeight:"600"}],
+      "display-lg":["48px",{lineHeight:"56px",fontWeight:"700"}]
+    }
+  }}
+};
+</script>
+<style>
+  body { min-height: max(884px, 100dvh); }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+  .drop-cap::first-letter {
+    font-family: 'Literata', serif; font-weight: 700; font-size: 4.5rem;
+    float: left; line-height: 0.85; padding: 0.4rem 0.8rem 0 0; color: #003441;
+  }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen pb-[100px] md:pb-0 selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+
+<header class="bg-surface docked full-width top-0 flat no shadows sticky z-40">
+<div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-sm group">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden border-2 border-secondary-container p-[2px] relative flex-shrink-0">
+<div class="absolute inset-0 rounded-full border-[3px] border-tertiary-container border-t-transparent border-l-transparent transform rotate-45 z-10"></div>
+<img alt="Child profile" class="w-full h-full rounded-full object-cover relative z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkaJWhSRS19h2gwOd7O46EGkN0k6bhg4ir6MNXhrqX2wWu1TnZxMQNzhCr562VAwolVjpClrg5FTv2tfi9DohmY0IkW5i4IAT0_Yx8j-4TS4VnP5OAlK6HRMaN_VMAUPFIYnzZdXsHSxo3xvmMc9i-d01p9OMd05-EW3FvhT2FObB8-tLJJ0EyArIL81RC-UinKywHphgLxMvsuRGYl7UOI5bPFIrwii6b0J6UjM_rpux350MkHNNRrwlgAWB01fB8GbrwF2x_agU"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">MusaQuest</span>
+</a>
+<nav class="hidden md:flex items-center gap-sm">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="index.html">
+<span class="material-symbols-outlined" >home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="text-primary font-bold bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="stories.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-caps text-label-caps">Stories</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >auto_stories</span>
+<span class="font-label-caps text-label-caps">Verses</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >self_improvement</span>
+<span class="font-label-caps text-label-caps">Reflect</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="profile.html">
+<span class="material-symbols-outlined" >person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<div class="hidden md:flex text-on-surface-variant font-label-caps text-label-caps bg-surface-container px-4 py-2 rounded-full items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>14 Safar 1446
+</div>
+</div>
+</header>
+
+<main class="max-w-container-max mx-auto px-md py-lg flex flex-col gap-lg">
+
+<header class="text-center md:text-left mb-md">
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.15em] mb-xs">The Library</p>
+<h1 class="font-display-lg text-display-lg text-primary mb-sm">The Story of Musa</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">Twelve chapters in the life of Prophet Musa, peace be upon him. From a basket on the Nile to the promised land.</p>
+</header>
+
+<!-- Progress strip -->
+<div class="bg-surface-container rounded-xl p-md flex items-center justify-between gap-md border border-surface-variant">
+<div class="flex items-center gap-md flex-1">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<p class="font-body-lg text-body-lg text-primary font-bold">2 of 12 chapters complete</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">17% read</p>
+</div>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 17%;"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Filter pills -->
+<nav class="flex gap-sm overflow-x-auto pb-2 -mx-md px-md">
+<button class="font-label-caps text-label-caps bg-primary-container text-on-primary-container px-lg py-sm rounded-full whitespace-nowrap shadow-[0_4px_12px_rgba(15,76,92,0.15)]">All Chapters</button>
+<button class="font-label-caps text-label-caps bg-surface-container text-on-surface-variant hover:bg-surface-container-high px-lg py-sm rounded-full whitespace-nowrap transition-colors">Completed</button>
+<button class="font-label-caps text-label-caps bg-surface-container text-on-surface-variant hover:bg-surface-container-high px-lg py-sm rounded-full whitespace-nowrap transition-colors">In Progress</button>
+<button class="font-label-caps text-label-caps bg-surface-container text-on-surface-variant hover:bg-surface-container-high px-lg py-sm rounded-full whitespace-nowrap transition-colors">Locked</button>
+</nav>
+
+<!-- Chapters grid: all 12 -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
+
+<!-- Ch 1 - Completed -->
+<a href="chapter.html" class="bg-surface border-2 border-surface-variant rounded-xl overflow-hidden hover:border-secondary-container transition-all hover:-translate-y-1 group cursor-pointer flex flex-col">
+<div class="h-32 bg-gradient-to-br from-primary-fixed-dim to-primary-container relative overflow-hidden">
+<span class="material-symbols-outlined absolute right-4 top-4 text-on-primary text-[40px] opacity-30" style="font-variation-settings: 'FILL' 1;">water</span>
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-primary opacity-90" style="font-variation-settings: 'FILL' 1;">child_care</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 1</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs">The River Cradle</h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-md flex-1">A baby placed in a basket, set adrift on the Nile, and the queen who finds him.</p>
+<div class="flex items-center justify-between pt-md border-t border-surface-variant">
+<span class="text-tertiary-container font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span> Completed</span>
+<span class="font-label-caps text-label-caps text-secondary">+150 XP</span>
+</div>
+</div>
+</a>
+
+<!-- Ch 2 - Completed -->
+<a href="chapter.html" class="bg-surface border-2 border-surface-variant rounded-xl overflow-hidden hover:border-secondary-container transition-all hover:-translate-y-1 group cursor-pointer flex flex-col">
+<div class="h-32 bg-gradient-to-br from-tertiary-container to-tertiary relative overflow-hidden">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-tertiary opacity-90" style="font-variation-settings: 'FILL' 1;">castle</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 2</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs">The Palace Walls</h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-md flex-1">Growing up between two worlds, Musa begins to ask hard questions.</p>
+<div class="flex items-center justify-between pt-md border-t border-surface-variant">
+<span class="text-tertiary-container font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span> Completed</span>
+<span class="font-label-caps text-label-caps text-secondary">+150 XP</span>
+</div>
+</div>
+</a>
+
+<!-- Ch 3 - In Progress (current) -->
+<a href="chapter.html" class="bg-surface border-2 border-secondary-container rounded-xl overflow-hidden hover:-translate-y-1 transition-all group cursor-pointer flex flex-col shadow-[0_8px_30px_rgba(15,76,92,0.08)] relative">
+<div class="absolute top-2 right-2 z-10 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-full shadow-sm">Continue</div>
+<div class="h-32 relative overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANTa9AT5a8m_64Fz_SPJIHhW_nZbxKj3AXaNFoVe_bpN_mHLrKclOjt0yusSrox-o467DqdRhE23u3DwaLT_kHl6mN3KOUH_EufO1Q3vO3NQRKq5_z-0q3KtE9Z6DY4k3VCJxM3Dy-YY3BS3uLM2_pX3W1u0zdaUE9Abp0SBMA2Hy2okVBkbjQ-G7Tgqix2kl5KPOC6eAYSOzScbT8oABCsKXVfqG_HQozTuEwR5nrva1P6OUsebPhvs3iG9Q25DEiE0VExJrW6XY" alt="Desert"/>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 3</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs">The Journey to Midian</h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-md flex-1">Across the desert, with nothing but a prayer and a hope of safety.</p>
+<div class="h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-container rounded-full" style="width: 65%;"></div>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2">65% read</p>
+</div>
+</a>
+
+<!-- Ch 4 - Next -->
+<div class="bg-surface-container border-2 border-secondary-fixed rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-90 relative">
+<div class="absolute top-2 right-2 z-10 bg-surface text-secondary font-label-caps text-label-caps px-3 py-1 rounded-full shadow-sm border border-secondary-fixed">Next up</div>
+<div class="h-32 bg-gradient-to-br from-secondary-fixed via-secondary-container to-tertiary-fixed relative overflow-hidden">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-secondary opacity-80" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 4</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">The Burning Tree <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant mb-md flex-1">A voice calls from the flames. Musa is given a mission that will change history.</p>
+<div class="pt-md border-t border-surface-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Complete Chapter 3 to unlock</span>
+</div>
+</div>
+</div>
+
+<!-- Ch 5 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-tertiary-fixed-dim to-tertiary-container relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-tertiary opacity-50" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 5</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">The Two Brothers <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">Reuniting with Harun, finding strength in family.</p>
+</div>
+</div>
+
+<!-- Ch 6 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-tertiary-container to-tertiary relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-tertiary opacity-50" style="font-variation-settings: 'FILL' 1;">stadium</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 6</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">Pharaoh's Court <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">Standing before power, speaking truth.</p>
+</div>
+</div>
+
+<!-- Ch 7 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-secondary-fixed-dim to-tertiary-fixed relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-secondary opacity-50">auto_fix_high</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 7</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">The Magicians <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">A contest unlike any other, and an unexpected ending.</p>
+</div>
+</div>
+
+<!-- Ch 8 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-tertiary to-tertiary-container relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-tertiary opacity-50">storm</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 8</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">The Nine Signs <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">Trials sent on Egypt, and a Pharaoh who will not listen.</p>
+</div>
+</div>
+
+<!-- Ch 9 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-primary-container to-primary relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-primary opacity-50" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 9</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">The Parted Sea <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">A path through the impossible.</p>
+</div>
+</div>
+
+<!-- Ch 10 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-primary-fixed-dim to-primary-container relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-primary opacity-50" style="font-variation-settings: 'FILL' 1;">terrain</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 10</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">Mount Sinai <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">Forty days alone with the Creator. The Tablets are given.</p>
+</div>
+</div>
+
+<!-- Ch 11 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-60">
+<div class="h-32 bg-gradient-to-br from-secondary-container to-secondary relative">
+<span class="material-symbols-outlined absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[64px] text-on-secondary opacity-50">heart_broken</span>
+</div>
+<div class="p-md flex flex-col flex-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 11</p>
+<h4 class="font-headline-md text-[20px] text-primary font-bold mb-xs flex items-center gap-2">The Golden Calf <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-sm text-on-surface-variant flex-1">Coming home to a people who lost their way.</p>
+</div>
+</div>
+
+<!-- Ch 12 -->
+<div class="bg-secondary-fixed/30 border-2 border-secondary-fixed rounded-xl overflow-hidden flex flex-col cursor-not-allowed opacity-80 sm:col-span-2 lg:col-span-3 relative">
+<div class="absolute top-2 right-2 z-10 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-full shadow-sm">Finale</div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-2/5 h-40 md:h-auto bg-gradient-to-br from-secondary-fixed-dim via-secondary-container to-tertiary-fixed relative overflow-hidden flex items-center justify-center">
+<span class="material-symbols-outlined text-[80px] text-on-secondary-container opacity-70" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+<div class="p-lg flex flex-col flex-1 justify-center">
+<p class="font-label-caps text-label-caps text-on-secondary-container mb-xs">Chapter 12</p>
+<h4 class="font-headline-md text-[24px] text-primary font-bold mb-xs flex items-center gap-2">The Promised Land <span class="material-symbols-outlined text-[20px] text-on-surface-variant">lock</span></h4>
+<p class="font-body-md text-on-surface-variant max-w-xl">Forty years of wandering. A promise kept. A teacher who never stopped trusting his Lord. The final chapter of Musa's journey.</p>
+</div>
+</div>
+</div>
+
+</section>
+
+<!-- Foot section: completion bonus tease -->
+<section class="bg-primary-container/10 border-2 border-dashed border-primary-fixed-dim rounded-xl p-lg text-center mt-md">
+<span class="material-symbols-outlined text-secondary-container text-[48px] mb-sm" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+<h3 class="font-headline-md text-[24px] text-primary mb-xs">Complete all 12 chapters</h3>
+<p class="font-body-md text-on-surface-variant max-w-xl mx-auto">Earn the Pilgrim badge, unlock the audio storybook to share with family, and reveal a special chapter on the lessons of Musa for our own time.</p>
+</section>
+
+</main>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-md pt-base bg-surface-container shadow-[0_-4px_20px_rgba(15,76,92,0.08)] rounded-t-[2rem]">
+
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="index.html">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-5 py-2 scale-90 transition-all duration-300 ease-out shadow-sm" href="stories.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-label-caps font-label-caps">Stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="text-label-caps font-label-caps">Verses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">self_improvement</span>
+<span class="text-label-caps font-label-caps">Reflect</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="profile.html">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</a>
+</nav>
+</body></html>

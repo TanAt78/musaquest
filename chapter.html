@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MusaQuest - The Journey to Midian</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Literata:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "tertiary-container":"#792d26","surface-variant":"#e7e2d8","surface-tint":"#306576",
+      "tertiary":"#5b1712","on-secondary-container":"#774a01","surface-container-high":"#ece8de",
+      "surface-dim":"#dedad0","surface-container":"#f2ede3","secondary-fixed-dim":"#fabb6c",
+      "primary-fixed":"#b6ebfe","tertiary-fixed-dim":"#ffb4aa","on-tertiary-fixed-variant":"#7a2e27",
+      "error-container":"#ffdad6","tertiary-fixed":"#ffdad5","on-tertiary-fixed":"#3f0303",
+      "surface":"#fef9ef","on-tertiary-container":"#ff988b","secondary":"#83540c","error":"#ba1a1a",
+      "inverse-surface":"#32302a","surface-bright":"#fef9ef","primary-container":"#0f4c5c",
+      "inverse-on-surface":"#f5f0e6","on-tertiary":"#ffffff","secondary-container":"#fdbd6f",
+      "on-surface-variant":"#40484b","outline-variant":"#c0c8cb","on-secondary-fixed-variant":"#653e00",
+      "on-primary":"#ffffff","on-error":"#ffffff","on-error-container":"#93000a",
+      "primary-fixed-dim":"#9acee1","on-primary-fixed":"#001f28","outline":"#70787c",
+      "on-primary-fixed-variant":"#114d5d","on-secondary-fixed":"#2a1700","on-secondary":"#ffffff",
+      "background":"#fef9ef","on-surface":"#1d1c16","primary":"#003441",
+      "on-primary-container":"#87bbce","secondary-fixed":"#ffddb8","surface-container-low":"#f8f3e9",
+      "inverse-primary":"#9acee1","surface-container-highest":"#e7e2d8","on-background":"#1d1c16",
+      "surface-container-lowest":"#ffffff"
+    },
+    borderRadius: { "DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px" },
+    spacing: { "lg":"40px","xl":"64px","base":"8px","sm":"12px","container-max":"1200px","xs":"4px","md":"24px" },
+    fontFamily: {
+      "arabic-display":["Amiri"],"label-caps":["Nunito Sans"],"body-lg":["Nunito Sans"],
+      "headline-md":["Literata"],"body-md":["Nunito Sans"],"display-lg":["Literata"]
+    },
+    fontSize: {
+      "label-caps":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],
+      "body-lg":["16px",{lineHeight:"24px"}],"body-md":["14px",{lineHeight:"20px"}],
+      "headline-md":["32px",{lineHeight:"40px",fontWeight:"600"}],
+      "display-lg":["48px",{lineHeight:"56px",fontWeight:"700"}]
+    }
+  }}
+};
+</script>
+<style>
+  body { min-height: max(884px, 100dvh); }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+  .drop-cap::first-letter {
+    font-family: 'Literata', serif; font-weight: 700; font-size: 4.5rem;
+    float: left; line-height: 0.85; padding: 0.4rem 0.8rem 0 0; color: #003441;
+  }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen pb-[100px] md:pb-0 selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+
+<header class="bg-surface docked full-width top-0 flat no shadows sticky z-40">
+<div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-sm group">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden border-2 border-secondary-container p-[2px] relative flex-shrink-0">
+<div class="absolute inset-0 rounded-full border-[3px] border-tertiary-container border-t-transparent border-l-transparent transform rotate-45 z-10"></div>
+<img alt="Child profile" class="w-full h-full rounded-full object-cover relative z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkaJWhSRS19h2gwOd7O46EGkN0k6bhg4ir6MNXhrqX2wWu1TnZxMQNzhCr562VAwolVjpClrg5FTv2tfi9DohmY0IkW5i4IAT0_Yx8j-4TS4VnP5OAlK6HRMaN_VMAUPFIYnzZdXsHSxo3xvmMc9i-d01p9OMd05-EW3FvhT2FObB8-tLJJ0EyArIL81RC-UinKywHphgLxMvsuRGYl7UOI5bPFIrwii6b0J6UjM_rpux350MkHNNRrwlgAWB01fB8GbrwF2x_agU"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">MusaQuest</span>
+</a>
+<nav class="hidden md:flex items-center gap-sm">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="index.html">
+<span class="material-symbols-outlined" >home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="text-primary font-bold bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="stories.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-label-caps text-label-caps">Stories</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >auto_stories</span>
+<span class="font-label-caps text-label-caps">Verses</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >self_improvement</span>
+<span class="font-label-caps text-label-caps">Reflect</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="profile.html">
+<span class="material-symbols-outlined" >person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<div class="hidden md:flex text-on-surface-variant font-label-caps text-label-caps bg-surface-container px-4 py-2 rounded-full items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>14 Safar 1446
+</div>
+</div>
+</header>
+
+<main class="max-w-[760px] mx-auto px-md py-lg flex flex-col gap-lg">
+
+<!-- Breadcrumb / back -->
+<div class="flex items-center justify-between">
+<a href="stories.html" class="inline-flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-label-caps text-label-caps">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span> All Stories
+</a>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface-container px-3 py-1 rounded-full">Chapter 3 of 12</span>
+</div>
+
+<!-- Hero illustration -->
+<div class="relative rounded-xl overflow-hidden aspect-[16/10] border-2 border-secondary-fixed shadow-[0_8px_30px_rgba(15,76,92,0.08)]">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANTa9AT5a8m_64Fz_SPJIHhW_nZbxKj3AXaNFoVe_bpN_mHLrKclOjt0yusSrox-o467DqdRhE23u3DwaLT_kHl6mN3KOUH_EufO1Q3vO3NQRKq5_z-0q3KtE9Z6DY4k3VCJxM3Dy-YY3BS3uLM2_pX3W1u0zdaUE9Abp0SBMA2Hy2okVBkbjQ-G7Tgqix2kl5KPOC6eAYSOzScbT8oABCsKXVfqG_HQozTuEwR5nrva1P6OUsebPhvs3iG9Q25DEiE0VExJrW6XY" alt="Desert landscape at dawn"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg">
+<span class="font-label-caps text-label-caps text-on-primary bg-primary-container/80 backdrop-blur-sm px-3 py-1 rounded-full">In Progress</span>
+</div>
+</div>
+
+<!-- Title -->
+<header class="text-center md:text-left">
+<p class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.15em] mb-xs">Chapter 3</p>
+<h1 class="font-display-lg text-display-lg text-primary mb-md leading-tight">The Journey to Midian</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">A story about courage when there is nowhere left to go, and the small kindnesses that change everything.</p>
+</header>
+
+<!-- Audio player bar -->
+<div class="bg-surface-container rounded-xl p-md flex items-center gap-md border border-surface-variant shadow-sm">
+<button class="w-14 h-14 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-[0_4px_12px_rgba(15,76,92,0.2)] hover:scale-105 transition-transform" onclick="this.querySelector('span').textContent = this.querySelector('span').textContent === 'play_arrow' ? 'pause' : 'play_arrow'">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-primary font-bold">Listen along</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Narrated by Yusuf Islam, 4 min 12s</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2">
+<span class="material-symbols-outlined">graphic_eq</span>
+</button>
+</div>
+
+<!-- Body text -->
+<article class="prose-musa flex flex-col gap-md">
+
+<p class="font-headline-md text-[20px] text-on-surface drop-cap leading-relaxed">After everything that had happened, Musa knew he could not stay in Egypt any longer. Quietly, before the sun rose, he wrapped his cloak around his shoulders and walked out into the sleeping streets.</p>
+
+<p class="font-body-lg text-[18px] text-on-surface leading-relaxed">The desert lay beyond the city, vast and golden in the morning light. Musa walked, and walked, and walked. He had no map. He had no friends. He had only the prayer in his heart:</p>
+
+<blockquote class="border-l-4 border-secondary-container bg-surface-container-low px-lg py-md rounded-r-xl my-base group cursor-pointer transition-all" onclick="this.classList.toggle('verse-revealed')" id="verse-card">
+<div class="flex items-start justify-between gap-md mb-sm">
+<p class="font-arabic-display text-[28px] text-primary text-right leading-loose flex-1">رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ</p>
+<span class="material-symbols-outlined text-secondary-container shrink-0 transition-transform group-[.verse-revealed]:rotate-180" style="font-variation-settings: 'FILL' 1;">expand_more</span>
+</div>
+<p class="font-headline-md text-[18px] text-on-surface-variant italic">"O my Lord, save me from the wrong-doing people."</p>
+<p class="font-label-caps text-label-caps text-secondary mt-sm">Surah Al-Qasas, Verse 21. Tap to learn more</p>
+
+<!-- Hidden by default; revealed on tap -->
+<div class="hidden group-[.verse-revealed]:block mt-md pt-md border-t border-secondary-container/30 space-y-md">
+<div>
+<p class="font-label-caps text-label-caps text-secondary uppercase mb-xs">Transliteration</p>
+<p class="font-headline-md text-[18px] text-on-surface italic">Rabbi najjini mina al-qawmi az-zalimeen</p>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-secondary uppercase mb-xs">Word by word</p>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-sm">
+<div class="bg-surface rounded-lg p-sm border border-surface-variant text-center">
+<p class="font-arabic-display text-[20px] text-primary mb-1">رَبِّ</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Rabbi</p>
+<p class="font-body-md text-xs text-on-surface mt-1">My Lord</p>
+</div>
+<div class="bg-surface rounded-lg p-sm border border-surface-variant text-center">
+<p class="font-arabic-display text-[20px] text-primary mb-1">نَجِّنِى</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">najjini</p>
+<p class="font-body-md text-xs text-on-surface mt-1">save me</p>
+</div>
+<div class="bg-surface rounded-lg p-sm border border-surface-variant text-center">
+<p class="font-arabic-display text-[20px] text-primary mb-1">مِنَ ٱلْقَوْمِ</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">mina al-qawmi</p>
+<p class="font-body-md text-xs text-on-surface mt-1">from the people</p>
+</div>
+<div class="bg-surface rounded-lg p-sm border border-surface-variant text-center">
+<p class="font-arabic-display text-[20px] text-primary mb-1">ٱلظَّـٰلِمِينَ</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">az-zalimeen</p>
+<p class="font-body-md text-xs text-on-surface mt-1">who do wrong</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-sm pt-sm">
+<button class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-md py-sm rounded-full inline-flex items-center gap-2 hover:bg-primary transition-colors" onclick="event.stopPropagation()">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">volume_up</span> Hear it recited
+</button>
+<button class="bg-surface text-primary font-label-caps text-label-caps px-md py-sm rounded-full inline-flex items-center gap-2 hover:bg-surface-container-high transition-colors border border-surface-variant" onclick="event.stopPropagation()">
+<span class="material-symbols-outlined text-[18px]">school</span> Learn to memorize
+</button>
+</div>
+</div>
+</blockquote>
+
+<p class="font-body-lg text-[18px] text-on-surface leading-relaxed">Days passed. The sun was hot. His feet ached. But Musa kept going, because sometimes the bravest thing is just to keep walking.</p>
+
+<p class="font-body-lg text-[18px] text-on-surface leading-relaxed">At last, he saw it: a small green oasis in the distance. A well with cool, clear water. People had gathered there to water their animals, the noise of bleating sheep and laughing children carrying across the warm air.</p>
+
+<p class="font-body-lg text-[18px] text-on-surface leading-relaxed">Musa rested under the shade of a tree, tired but safe. And then he noticed something. Two young women were standing back from the well, holding their sheep close, waiting their turn while the strong men pushed ahead. They looked patient. They looked tired. They had been waiting a long time.</p>
+
+<p class="font-body-lg text-[18px] text-on-surface leading-relaxed font-bold text-primary">Musa stood up.</p>
+
+<p class="font-body-lg text-[18px] text-on-surface leading-relaxed">He didn't say much. He simply walked to the well, drew the water, and helped them. It was a small kindness in a tired moment. But that kindness was about to change his whole life.</p>
+
+</article>
+
+<!-- Reflection prompt -->
+<section class="bg-secondary-fixed/20 border-2 border-secondary-fixed rounded-xl p-lg flex flex-col md:flex-row gap-md items-start">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">self_improvement</span>
+</div>
+<div class="flex-1">
+<p class="font-label-caps text-label-caps text-secondary uppercase mb-xs">Reflection</p>
+<h3 class="font-headline-md text-[22px] text-primary mb-sm">When have you helped someone without being asked?</h3>
+<p class="font-body-md text-on-surface-variant mb-md">Take a moment to think. Write down one small kindness you did this week, or one you could do tomorrow.</p>
+<button class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-lg py-sm rounded-full hover:bg-secondary-fixed-dim transition-colors inline-flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">edit_note</span> Write a reflection (+30 XP)
+</button>
+</div>
+</section>
+
+<!-- Pagination / mark complete -->
+<div class="flex flex-col md:flex-row gap-md mt-lg">
+<a href="stories.html" class="flex-1 bg-surface border-2 border-surface-variant rounded-xl p-md text-center hover:border-secondary-container transition-colors">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Previous</p>
+<p class="font-body-lg text-body-lg text-primary font-bold">Chapter 2: The Palace Walls</p>
+</a>
+<a href="index.html" class="flex-1 bg-primary-container text-on-primary-container rounded-xl p-md text-center hover:bg-primary transition-colors flex flex-col items-center justify-center gap-1 shadow-[0_4px_12px_rgba(15,76,92,0.2)]">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<p class="font-label-caps text-label-caps">Mark Chapter Complete (+100 XP)</p>
+</a>
+</div>
+
+</main>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-md pt-base bg-surface-container shadow-[0_-4px_20px_rgba(15,76,92,0.08)] rounded-t-[2rem]">
+
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="index.html">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-5 py-2 scale-90 transition-all duration-300 ease-out shadow-sm" href="stories.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-label-caps font-label-caps">Stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="text-label-caps font-label-caps">Verses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">self_improvement</span>
+<span class="text-label-caps font-label-caps">Reflect</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="profile.html">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</a>
+</nav>
+</body></html>

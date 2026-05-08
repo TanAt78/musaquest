@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MusaQuest - The Traveler</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Literata:wght@400;600;700&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: { extend: {
+    colors: {
+      "tertiary-container":"#792d26","surface-variant":"#e7e2d8","surface-tint":"#306576",
+      "tertiary":"#5b1712","on-secondary-container":"#774a01","surface-container-high":"#ece8de",
+      "surface-dim":"#dedad0","surface-container":"#f2ede3","secondary-fixed-dim":"#fabb6c",
+      "primary-fixed":"#b6ebfe","tertiary-fixed-dim":"#ffb4aa","on-tertiary-fixed-variant":"#7a2e27",
+      "error-container":"#ffdad6","tertiary-fixed":"#ffdad5","on-tertiary-fixed":"#3f0303",
+      "surface":"#fef9ef","on-tertiary-container":"#ff988b","secondary":"#83540c","error":"#ba1a1a",
+      "inverse-surface":"#32302a","surface-bright":"#fef9ef","primary-container":"#0f4c5c",
+      "inverse-on-surface":"#f5f0e6","on-tertiary":"#ffffff","secondary-container":"#fdbd6f",
+      "on-surface-variant":"#40484b","outline-variant":"#c0c8cb","on-secondary-fixed-variant":"#653e00",
+      "on-primary":"#ffffff","on-error":"#ffffff","on-error-container":"#93000a",
+      "primary-fixed-dim":"#9acee1","on-primary-fixed":"#001f28","outline":"#70787c",
+      "on-primary-fixed-variant":"#114d5d","on-secondary-fixed":"#2a1700","on-secondary":"#ffffff",
+      "background":"#fef9ef","on-surface":"#1d1c16","primary":"#003441",
+      "on-primary-container":"#87bbce","secondary-fixed":"#ffddb8","surface-container-low":"#f8f3e9",
+      "inverse-primary":"#9acee1","surface-container-highest":"#e7e2d8","on-background":"#1d1c16",
+      "surface-container-lowest":"#ffffff"
+    },
+    borderRadius: { "DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px" },
+    spacing: { "lg":"40px","xl":"64px","base":"8px","sm":"12px","container-max":"1200px","xs":"4px","md":"24px" },
+    fontFamily: {
+      "arabic-display":["Amiri"],"label-caps":["Nunito Sans"],"body-lg":["Nunito Sans"],
+      "headline-md":["Literata"],"body-md":["Nunito Sans"],"display-lg":["Literata"]
+    },
+    fontSize: {
+      "label-caps":["12px",{lineHeight:"16px",letterSpacing:"0.05em",fontWeight:"600"}],
+      "body-lg":["16px",{lineHeight:"24px"}],"body-md":["14px",{lineHeight:"20px"}],
+      "headline-md":["32px",{lineHeight:"40px",fontWeight:"600"}],
+      "display-lg":["48px",{lineHeight:"56px",fontWeight:"700"}]
+    }
+  }}
+};
+</script>
+<style>
+  body { min-height: max(884px, 100dvh); }
+  @keyframes shimmer { 100% { transform: translateX(100%); } }
+  .drop-cap::first-letter {
+    font-family: 'Literata', serif; font-weight: 700; font-size: 4.5rem;
+    float: left; line-height: 0.85; padding: 0.4rem 0.8rem 0 0; color: #003441;
+  }
+</style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md min-h-screen pb-[100px] md:pb-0 selection:bg-secondary-container selection:text-on-secondary-container antialiased">
+
+<header class="bg-surface docked full-width top-0 flat no shadows sticky z-40">
+<div class="flex justify-between items-center w-full px-md py-sm max-w-container-max mx-auto">
+<a href="index.html" class="flex items-center gap-sm group">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden border-2 border-secondary-container p-[2px] relative flex-shrink-0">
+<div class="absolute inset-0 rounded-full border-[3px] border-tertiary-container border-t-transparent border-l-transparent transform rotate-45 z-10"></div>
+<img alt="Child profile" class="w-full h-full rounded-full object-cover relative z-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkaJWhSRS19h2gwOd7O46EGkN0k6bhg4ir6MNXhrqX2wWu1TnZxMQNzhCr562VAwolVjpClrg5FTv2tfi9DohmY0IkW5i4IAT0_Yx8j-4TS4VnP5OAlK6HRMaN_VMAUPFIYnzZdXsHSxo3xvmMc9i-d01p9OMd05-EW3FvhT2FObB8-tLJJ0EyArIL81RC-UinKywHphgLxMvsuRGYl7UOI5bPFIrwii6b0J6UjM_rpux350MkHNNRrwlgAWB01fB8GbrwF2x_agU"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold text-primary tracking-tight">MusaQuest</span>
+</a>
+<nav class="hidden md:flex items-center gap-sm">
+<a class="text-primary font-bold bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="index.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="stories.html">
+<span class="material-symbols-outlined" >menu_book</span>
+<span class="font-label-caps text-label-caps">Stories</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >auto_stories</span>
+<span class="font-label-caps text-label-caps">Verses</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" >self_improvement</span>
+<span class="font-label-caps text-label-caps">Reflect</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-4 py-2 rounded-xl flex items-center gap-2" href="profile.html">
+<span class="material-symbols-outlined" >person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<div class="hidden md:flex text-on-surface-variant font-label-caps text-label-caps bg-surface-container px-4 py-2 rounded-full items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>14 Safar 1446
+</div>
+</div>
+</header>
+
+<main class="max-w-container-max mx-auto px-md py-lg flex flex-col gap-xl">
+
+<!-- Father-son credit ribbon -->
+<div class="flex items-center justify-center gap-2 -mt-2">
+<span class="material-symbols-outlined text-secondary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant">An idea by Musa Tanvir, age 10. Built with his Abba.</p>
+<span class="material-symbols-outlined text-secondary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+
+<!-- Streak banner (top of feed) -->
+<div class="bg-tertiary-container/10 border-2 border-tertiary-container/30 rounded-xl p-md flex items-center justify-between gap-md">
+<div class="flex items-center gap-md">
+<div class="w-14 h-14 rounded-full bg-tertiary-container flex items-center justify-center shadow-[0_0_24px_rgba(121,45,38,0.3)] relative">
+<span class="material-symbols-outlined text-on-tertiary-container text-[32px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<p class="font-headline-md text-[20px] text-primary font-bold leading-tight">5 day streak</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Read today to keep it alive</p>
+</div>
+</div>
+<div class="hidden sm:flex flex-col items-end gap-1">
+<div class="flex gap-1">
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-container"></span>
+<span class="w-3 h-3 rounded-full border-2 border-tertiary-container/40"></span>
+<span class="w-3 h-3 rounded-full border-2 border-surface-variant"></span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Best: 12 days</p>
+</div>
+</div>
+
+<!-- HeroRankBanner: now wraps in <a> to profile.html -->
+<a href="profile.html" class="block hover:scale-[1.005] transition-transform">
+<section class="bg-surface-container rounded-xl p-lg md:p-xl relative overflow-hidden flex flex-col md:flex-row items-center gap-xl border-2 border-secondary-fixed shadow-[0_8px_30px_rgba(15,76,92,0.04)]">
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-secondary-fixed opacity-40 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary-fixed-dim opacity-20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-primary-container flex items-center justify-center relative shrink-0 z-10 shadow-[0_10px_25px_rgba(15,76,92,0.15)] border-4 border-surface">
+<span class="material-symbols-outlined text-[64px] md:text-[80px] text-secondary-container drop-shadow-sm" style="font-variation-settings: 'FILL' 1;">landscape</span>
+</div>
+<div class="flex-1 w-full z-10 text-center md:text-left">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs uppercase tracking-[0.1em]">Current Rank</p>
+<h1 class="font-display-lg text-display-lg text-primary mb-md">The Traveler</h1>
+<div class="flex items-center justify-between mb-sm mt-md px-2">
+<span class="font-body-lg text-body-lg text-primary font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">stars</span> Level 12
+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">2,450 / 3,000 XP</span>
+</div>
+<div class="h-5 w-full bg-surface-variant rounded-full overflow-hidden p-[2px]">
+<div class="h-full bg-tertiary-container rounded-full relative overflow-hidden" style="width: 82%;">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full transform -translate-x-full animate-[shimmer_2s_infinite]"></div>
+</div>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant mt-sm">Only 550 XP until the next milestone. Keep exploring!</p>
+</div>
+</section>
+</a>
+
+<!-- Continue Story Card: Continue Reading button now goes to chapter.html -->
+<section class="flex flex-col md:flex-row bg-surface border-2 border-secondary-fixed rounded-lg overflow-hidden relative group shadow-[0_4px_20px_rgba(15,76,92,0.06)] hover:shadow-[0_8px_30px_rgba(15,76,92,0.1)] transition-shadow duration-300">
+<div class="w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden">
+<img class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANTa9AT5a8m_64Fz_SPJIHhW_nZbxKj3AXaNFoVe_bpN_mHLrKclOjt0yusSrox-o467DqdRhE23u3DwaLT_kHl6mN3KOUH_EufO1Q3vO3NQRKq5_z-0q3KtE9Z6DY4k3VCJxM3Dy-YY3BS3uLM2_pX3W1u0zdaUE9Abp0SBMA2Hy2okVBkbjQ-G7Tgqix2kl5KPOC6eAYSOzScbT8oABCsKXVfqG_HQozTuEwR5nrva1P6OUsebPhvs3iG9Q25DEiE0VExJrW6XY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent md:hidden"></div>
+<div class="absolute bottom-4 left-4 md:hidden">
+<span class="font-label-caps text-label-caps text-on-primary bg-primary-container/80 backdrop-blur-sm px-3 py-1 rounded-full">Up Next</span>
+</div>
+</div>
+<div class="p-lg md:p-xl flex-1 flex flex-col justify-center bg-surface-container-low relative z-10">
+<span class="hidden md:inline-block font-label-caps text-label-caps text-primary bg-primary-fixed/50 px-4 py-1.5 rounded-full w-fit mb-md border border-primary-fixed-dim">Up Next</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-sm">The Journey to Midian</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-2xl">Follow the path across the vast desert as a new chapter begins. Discover the well of Midian and the enduring virtues of patience, resilience, and unexpected kindness.</p>
+<div>
+<a href="chapter.html" class="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-xl py-sm rounded-full hover:bg-primary transition-colors inline-flex items-center justify-center gap-2 shadow-[0_4px_12px_rgba(15,76,92,0.2)] hover:shadow-none active:scale-95 duration-200">
+Continue Reading <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- Bento Grid: Quests & Chapters -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<section class="lg:col-span-5 bg-surface-container rounded-xl p-lg flex flex-col border border-surface-variant">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-headline-md text-[28px] text-primary flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-container text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+Daily Quests
+</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant bg-surface px-3 py-1 rounded-full shadow-sm">1/3 Done</span>
+</div>
+<ul class="flex flex-col gap-sm flex-1">
+<li class="bg-surface rounded-lg p-md border-2 border-tertiary-container/20 flex items-center gap-md opacity-70 transition-opacity hover:opacity-100">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'wght' 600;">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-[18px] text-on-surface font-bold line-through decoration-tertiary-container/50">Reflect on Patience</p>
+<p class="font-label-caps text-label-caps text-tertiary-container mt-1">+30 XP</p>
+</div>
+</li>
+<li class="bg-surface rounded-lg p-md border-2 border-surface-variant flex items-center gap-md shadow-sm hover:border-secondary-container transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant flex items-center justify-center text-primary-container bg-surface shrink-0 group-hover:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-50 transition-opacity">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-[18px] text-on-surface font-bold">Read 3 Verses</p>
+<p class="font-label-caps text-label-caps text-secondary mt-1">+50 XP</p>
+</div>
+</li>
+<li class="bg-surface rounded-lg p-md border-2 border-surface-variant flex items-center gap-md shadow-sm hover:border-secondary-container transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-full border-2 border-outline-variant flex items-center justify-center text-primary-container bg-surface shrink-0 group-hover:border-secondary-container transition-colors">
+<span class="material-symbols-outlined text-[20px] opacity-0 group-hover:opacity-50 transition-opacity">check</span>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-[18px] text-on-surface font-bold">Complete a Chapter</p>
+<p class="font-label-caps text-label-caps text-secondary mt-1">+100 XP</p>
+</div>
+</li>
+</ul>
+</section>
+
+<section class="lg:col-span-7 flex flex-col">
+<div class="flex items-center justify-between mb-md px-2">
+<h3 class="font-headline-md text-[24px] text-primary">Your Journey</h3>
+<a href="stories.html" class="font-label-caps text-label-caps text-primary hover:text-primary-container transition-colors">View All</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md flex-1">
+<a href="stories.html" class="bg-surface border-2 border-surface-variant rounded-xl p-md flex flex-col hover:border-secondary-container transition-colors cursor-pointer group relative overflow-hidden">
+<div class="absolute right-0 top-0 w-24 h-24 bg-surface-container rounded-bl-full opacity-50 -z-10 group-hover:scale-110 transition-transform"></div>
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-md group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 1</p>
+<h4 class="font-body-lg text-body-lg text-primary font-bold mb-auto pr-8">The River Cradle</h4>
+<div class="mt-xl flex items-center justify-between pt-md border-t border-surface-variant">
+<span class="text-tertiary-container font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span> Completed</span>
+</div>
+</a>
+<a href="stories.html" class="bg-surface border-2 border-surface-variant rounded-xl p-md flex flex-col hover:border-secondary-container transition-colors cursor-pointer group relative overflow-hidden">
+<div class="absolute right-0 top-0 w-24 h-24 bg-surface-container rounded-bl-full opacity-50 -z-10 group-hover:scale-110 transition-transform"></div>
+<div class="w-12 h-12 rounded-full bg-primary-fixed/30 flex items-center justify-center mb-md group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">explore</span>
+</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">Chapter 2</p>
+<h4 class="font-body-lg text-body-lg text-primary font-bold mb-auto pr-8">The Palace Walls</h4>
+<div class="mt-xl flex items-center justify-between pt-md border-t border-surface-variant">
+<span class="text-tertiary-container font-label-caps text-label-caps flex items-center gap-1"><span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span> Completed</span>
+</div>
+</a>
+<div class="bg-secondary-fixed/20 border-2 border-secondary-container rounded-xl p-md flex flex-col cursor-not-allowed group relative overflow-hidden sm:col-span-2 opacity-80">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-surface-container/30 to-surface-container-low opacity-50"></div>
+<div class="relative z-10 flex flex-row items-center justify-between w-full h-full gap-md">
+<div class="flex-1">
+<p class="font-label-caps text-label-caps text-on-secondary-container mb-xs">Chapter 4</p>
+<h4 class="font-headline-md text-[24px] text-secondary font-bold">The Burning Tree</h4>
+<p class="font-body-md text-sm text-on-surface-variant mt-2 max-w-sm">Complete "The Journey to Midian" to unlock this chapter.</p>
+</div>
+<div class="w-14 h-14 shrink-0 rounded-full bg-surface border border-surface-variant flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary opacity-60">lock</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-md pt-base bg-surface-container shadow-[0_-4px_20px_rgba(15,76,92,0.08)] rounded-t-[2rem]">
+
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-5 py-2 scale-90 transition-all duration-300 ease-out shadow-sm" href="index.html">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-caps font-label-caps">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="stories.html">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span class="text-label-caps font-label-caps">Stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="text-label-caps font-label-caps">Verses</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">self_improvement</span>
+<span class="text-label-caps font-label-caps">Reflect</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors" href="profile.html">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-label-caps font-label-caps">Profile</span>
+</a>
+</nav>
+</body></html>
