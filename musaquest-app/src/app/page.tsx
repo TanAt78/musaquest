@@ -5,11 +5,14 @@ export default async function Home() {
   const supabase = await createClient();
   const userId = '00000000-0000-0000-0000-000000000000'; // Dummy user
 
-  const { data: stats } = await supabase
-    .from('user_stats')
-    .select('*')
-    .eq('user_id', userId)
-    .single();
+  const [{ data: stats }, { data: chapters }, { data: progress }] = await Promise.all([
+    supabase.from('user_stats').select('*').eq('user_id', userId).single(),
+    supabase.from('chapters').select('id, number, title').order('number', { ascending: true }),
+    supabase.from('user_progress').select('chapter_id, percent_read').eq('user_id', userId),
+  ]);
+
+  const progressMap = new Map<number, number>();
+  progress?.forEach(p => progressMap.set(p.chapter_id, p.percent_read));
 
   const currentStreak = stats?.current_streak_days || 0;
   const bestStreak = stats?.longest_streak_days || 0;
@@ -19,6 +22,9 @@ export default async function Home() {
   const rankMaxXp = 3000; // Hardcoded for 'The Traveler' prototype logic
   const xpUntilNext = Math.max(0, rankMaxXp - totalXp);
   const progressPercent = Math.min(100, Math.round((totalXp / rankMaxXp) * 100));
+
+  // Timeline icons mirror the stories page so the visual language matches
+  const timelineIcons = ['water', 'castle', 'local_fire_department', 'groups', 'stadium', 'auto_fix_high', 'storm', 'water_drop', 'terrain', 'heart_broken', 'landscape', 'stars'];
 
   return (
     <main className="max-w-container-max mx-auto px-md py-lg flex flex-col gap-xl">
@@ -45,6 +51,69 @@ export default async function Home() {
         <p className="font-label-caps text-label-caps text-on-surface-variant">An idea by Musa Tanvir, age 10.</p>
         <span className="material-symbols-outlined text-secondary-container text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
       </div>
+
+      {/* Musa's life timeline — the major events of the story, with the user's progress overlaid */}
+      <section className="bg-surface-container/40 border border-surface-variant rounded-xl p-md md:p-lg overflow-hidden">
+        <header className="flex items-center justify-between mb-md gap-md">
+          <h2 className="font-headline-md text-[20px] md:text-[22px] text-primary flex items-center gap-2">
+            <span className="material-symbols-outlined text-secondary-container" style={{ fontVariationSettings: "'FILL' 1" }}>route</span>
+            Musa's Journey
+          </h2>
+          <Link href="/stories" className="font-label-caps text-label-caps text-primary hover:text-primary-container transition-colors whitespace-nowrap">
+            View all chapters
+          </Link>
+        </header>
+
+        <div className="relative overflow-x-auto pb-3 -mx-md px-md">
+          <ol className="relative flex items-start gap-0 min-w-max">
+            {chapters?.map((chapter, idx) => {
+              const percentRead = progressMap.get(chapter.id) ?? 0;
+              const isCompleted = percentRead === 100;
+              const isInProgress = percentRead > 0 && percentRead < 100;
+              const prevCompleted = idx === 0 || progressMap.get(chapters[idx - 1].id) === 100;
+              const isLocked = !isCompleted && !isInProgress && !prevCompleted;
+              const icon = timelineIcons[idx % timelineIcons.length];
+
+              const nodeClasses = isCompleted
+                ? 'bg-tertiary-container text-on-tertiary-container'
+                : isInProgress
+                ? 'bg-primary-container text-on-primary-container ring-4 ring-primary-fixed/40'
+                : isLocked
+                ? 'bg-surface-container text-on-surface-variant opacity-60'
+                : 'bg-surface text-primary border-2 border-primary-fixed-dim';
+
+              return (
+                <li key={chapter.id} className="flex flex-col items-center w-[88px] flex-shrink-0 relative">
+                  {/* Connector to next node (drawn as a sibling segment so it sits between nodes) */}
+                  {idx < (chapters?.length ?? 0) - 1 && (
+                    <div
+                      aria-hidden="true"
+                      className={`absolute top-[26px] left-[calc(50%+24px)] right-[calc(-50%+24px)] h-0.5 ${
+                        isCompleted ? 'bg-tertiary-container/60' : 'bg-surface-variant'
+                      }`}
+                    />
+                  )}
+                  <Link
+                    href={isLocked ? '#' : `/chapter/${chapter.id}`}
+                    aria-disabled={isLocked}
+                    className={`relative z-10 group ${isLocked ? 'pointer-events-none' : ''}`}
+                  >
+                    <div className={`w-[52px] h-[52px] rounded-full border-4 border-surface flex items-center justify-center shadow-sm transition-transform group-hover:scale-110 ${nodeClasses}`}>
+                      <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                        {isLocked ? 'lock' : icon}
+                      </span>
+                    </div>
+                  </Link>
+                  <span className="font-label-caps text-label-caps text-on-surface-variant mt-2">Ch {chapter.number}</span>
+                  <span className="font-body-md text-[11px] leading-tight text-on-surface text-center mt-1 line-clamp-2 px-1 max-w-[80px]">
+                    {chapter.title}
+                  </span>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      </section>
 
       {/* Streak banner */}
       <div className="bg-tertiary-container/10 border-2 border-tertiary-container/30 rounded-xl p-md flex items-center justify-between gap-md">
@@ -204,6 +273,17 @@ export default async function Home() {
           </div>
         </section>
       </div>
+
+      {/* Footer: discreet admin entry point — visible but unobtrusive */}
+      <footer className="text-center pt-md pb-base">
+        <Link
+          href="/login"
+          className="font-label-caps text-label-caps text-on-surface-variant/60 hover:text-primary transition-colors inline-flex items-center gap-1"
+        >
+          <span className="material-symbols-outlined text-[16px]">admin_panel_settings</span>
+          Admin
+        </Link>
+      </footer>
     </main>
   );
 }
