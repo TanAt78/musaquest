@@ -54,7 +54,7 @@ export default async function Home() {
       {/* Hero image — sets the tone above the welcome heading */}
       <section className="relative -mt-md md:-mt-lg overflow-hidden rounded-2xl aspect-[21/9] md:aspect-[2.4/1] shadow-[0_12px_40px_rgba(15,76,92,0.12)] bg-surface-container">
         <img
-          src="/hero-musa.jpg"
+          src="/hero-musa.png"
           alt="The lands and miracles in the life of Prophet Musa, peace be upon him"
           className="hero-ken-burns absolute inset-0 w-full h-full object-cover"
         />
