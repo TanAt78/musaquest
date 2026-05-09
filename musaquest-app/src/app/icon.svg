@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- MusaQuest brand mark: cream "M" on a deep-teal circle, with a small
+       gold dot suggesting the burning tree / a star of guidance. -->
+  <circle cx="16" cy="16" r="16" fill="#003441"/>
+  <text x="16" y="22"
+        font-family="Literata, Georgia, serif"
+        font-size="20"
+        font-weight="700"
+        text-anchor="middle"
+        fill="#fef9ef">M</text>
+  <circle cx="24" cy="9" r="2.2" fill="#fdbd6f"/>
+</svg>

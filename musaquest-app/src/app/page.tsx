@@ -51,8 +51,10 @@ export default async function Home() {
   return (
     <main className="max-w-container-max mx-auto px-md py-lg flex flex-col gap-xl">
 
-      {/* Hero image — sets the tone above the welcome heading */}
-      <section className="relative -mt-md md:-mt-lg overflow-hidden rounded-2xl aspect-[21/9] md:aspect-[2.4/1] shadow-[0_12px_40px_rgba(15,76,92,0.12)] bg-surface-container">
+      {/* Hero image — sets the tone above the welcome heading.
+          Mobile gets a taller 4:3 crop so the scene reads at thumb-scroll
+          height; desktop stays cinematic at 2.4:1. */}
+      <section className="relative -mt-md md:-mt-lg overflow-hidden rounded-2xl aspect-[4/3] sm:aspect-[16/9] md:aspect-[2.4/1] shadow-[0_12px_40px_rgba(15,76,92,0.12)] bg-surface-container">
         <img
           src="/hero-musa.png"
           alt="The lands and miracles in the life of Prophet Musa, peace be upon him"
