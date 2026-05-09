@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
-
-const DUMMY_USER_ID = '00000000-0000-0000-0000-000000000000';
+import { getReadUserId } from "@/utils/supabase/auth";
 
 // Material Symbols mapped to chapter number — keeps the timeline visually
 // distinct without relying on per-chapter icons in the database.
@@ -21,11 +20,12 @@ type ChapterRow = {
 
 export default async function Home() {
   const supabase = await createClient();
+  const { userId, isAuthenticated } = await getReadUserId();
 
   const [{ data: stats }, { data: chaptersRaw }, { data: progressRaw }] = await Promise.all([
-    supabase.from('user_stats').select('*').eq('user_id', DUMMY_USER_ID).single(),
+    supabase.from('user_stats').select('*').eq('user_id', userId).maybeSingle(),
     supabase.from('chapters').select('id, number, title, subtitle, hero_image_url').order('number', { ascending: true }),
-    supabase.from('user_progress').select('chapter_id, completed_at').eq('user_id', DUMMY_USER_ID),
+    supabase.from('user_progress').select('chapter_id, completed_at').eq('user_id', userId),
   ]);
 
   const chapters: ChapterRow[] = chaptersRaw ?? [];
@@ -84,6 +84,29 @@ export default async function Home() {
         <p className="font-label-caps text-label-caps text-on-surface-variant">An idea by Musa Tanvir, age 10.</p>
         <span className="material-symbols-outlined text-secondary-container text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
       </div>
+
+      {/* Guest banner — visible only to unauthenticated visitors */}
+      {!isAuthenticated && (
+        <div className="bg-secondary-fixed/15 border border-secondary-fixed rounded-xl px-md py-sm flex flex-col sm:flex-row items-center justify-between gap-sm text-center sm:text-left">
+          <p className="font-body-md text-on-surface-variant">
+            You're reading as a guest. <span className="text-primary font-bold">Create an account</span> to save reflections and track your progress.
+          </p>
+          <div className="flex gap-sm">
+            <Link
+              href="/login?mode=signup"
+              className="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-lg py-sm rounded-full hover:bg-primary transition-colors whitespace-nowrap"
+            >
+              Sign up
+            </Link>
+            <Link
+              href="/login"
+              className="text-primary font-label-caps text-label-caps px-md py-sm hover:text-primary-container transition-colors whitespace-nowrap"
+            >
+              Sign in
+            </Link>
+          </div>
+        </div>
+      )}
 
       {/* Life of Musa timeline — chapter titles as canonical milestones */}
       {chapters.length > 0 && (
@@ -299,16 +322,6 @@ export default async function Home() {
         </section>
       </div>
 
-      {/* Footer: discreet admin entry point — visible but unobtrusive */}
-      <footer className="text-center pt-md pb-base">
-        <Link
-          href="/login"
-          className="font-label-caps text-label-caps text-on-surface-variant/60 hover:text-primary transition-colors inline-flex items-center gap-1"
-        >
-          <span className="material-symbols-outlined text-[16px]">admin_panel_settings</span>
-          Admin
-        </Link>
-      </footer>
     </main>
   );
 }

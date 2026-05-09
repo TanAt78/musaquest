@@ -2,17 +2,25 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TopNavBar from "@/components/TopNavBar";
 import BottomMobileNav from "@/components/BottomMobileNav";
+import { getAuthUser, isAdminEmail } from "@/utils/supabase/auth";
 
 export const metadata: Metadata = {
   title: "MusaQuest - The Traveler",
   description: "Gamified Islamic storytelling app for Muslim children",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await getAuthUser();
+  const authState = {
+    isAuthenticated: !!user,
+    email: user?.email ?? null,
+    isAdmin: isAdminEmail(user?.email),
+  };
+
   return (
     <html lang="en" className="light">
       <head>
@@ -30,7 +38,7 @@ export default function RootLayout({
       <body
         className="bg-background text-on-background font-body-md text-body-md min-h-screen pb-[100px] md:pb-0 selection:bg-secondary-container selection:text-on-secondary-container antialiased"
       >
-        <TopNavBar />
+        <TopNavBar auth={authState} />
         {children}
         <BottomMobileNav />
       </body>

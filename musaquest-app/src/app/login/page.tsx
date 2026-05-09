@@ -4,10 +4,11 @@ import Link from 'next/link'
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ message?: string; mode?: string }>
+  searchParams: Promise<{ message?: string; mode?: string; next?: string }>
 }) {
-  const { message, mode } = await searchParams;
+  const { message, mode, next } = await searchParams;
   const isSignup = mode === 'signup';
+  const safeNext = next && next.startsWith('/') && !next.startsWith('//') ? next : '';
 
   return (
     <main className="max-w-md mx-auto px-md py-xl flex flex-col gap-lg min-h-[70vh] justify-center">
@@ -16,15 +17,16 @@ export default async function LoginPage({
           <span className="material-symbols-outlined text-[20px]">arrow_back</span> Back to App
         </Link>
         <h1 className="font-display-lg text-display-lg text-primary mb-sm">
-          {isSignup ? 'Create Admin Account' : 'Admin Access'}
+          {isSignup ? 'Create your account' : 'Sign in'}
         </h1>
         <p className="font-body-md text-on-surface-variant mb-lg">
           {isSignup
-            ? 'One-time setup. Sign-up is restricted to the configured admin email.'
-            : 'Log in to add and edit chapters.'}
+            ? 'Track your reading, save reflections, and earn XP as you journey through the chapters.'
+            : 'Welcome back. Sign in to pick up where you left off.'}
         </p>
 
         <form className="flex flex-col gap-4">
+          {safeNext && <input type="hidden" name="next" value={safeNext} />}
           <div className="flex flex-col gap-1">
             <label className="font-label-caps text-label-caps text-on-surface" htmlFor="email">Email</label>
             <input
@@ -58,7 +60,7 @@ export default async function LoginPage({
 
           {message && (
             <p className={`mt-2 text-center p-4 rounded-xl font-body-md ${
-              message.toLowerCase().includes('created')
+              message.toLowerCase().includes('created') || message.toLowerCase().includes('check your inbox')
                 ? 'bg-tertiary-container/20 text-tertiary-container'
                 : 'bg-error-container text-on-error-container'
             }`}>
@@ -70,17 +72,17 @@ export default async function LoginPage({
         <div className="mt-md pt-md border-t border-surface-variant text-center">
           {isSignup ? (
             <Link
-              href="/login"
+              href={`/login${safeNext ? `?next=${encodeURIComponent(safeNext)}` : ''}`}
               className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
             >
               Already have an account? Sign in
             </Link>
           ) : (
             <Link
-              href="/login?mode=signup"
+              href={`/login?mode=signup${safeNext ? `&next=${encodeURIComponent(safeNext)}` : ''}`}
               className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors"
             >
-              First time? Create the admin account
+              New to MusaQuest? Create an account
             </Link>
           )}
         </div>

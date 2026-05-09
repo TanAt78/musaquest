@@ -1,22 +1,22 @@
 import Link from "next/link";
 import { markChapterComplete } from "@/app/actions";
 import { createClient } from "@/utils/supabase/server";
+import { getReadUserId } from "@/utils/supabase/auth";
 import { notFound } from "next/navigation";
 import ReflectionForm from "@/components/ReflectionForm";
-
-const DUMMY_USER_ID = '00000000-0000-0000-0000-000000000000';
 
 export default async function Chapter({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const chapterId = parseInt(id, 10);
   const supabase = await createClient();
+  const { userId, isAuthenticated } = await getReadUserId();
 
   const [{ data: chapter }, { data: progress }] = await Promise.all([
     supabase.from('chapters').select('*').eq('id', chapterId).single(),
     supabase
       .from('user_progress')
       .select('reflection_text, completed_at')
-      .eq('user_id', DUMMY_USER_ID)
+      .eq('user_id', userId)
       .eq('chapter_id', chapterId)
       .maybeSingle(),
   ]);
@@ -128,12 +128,33 @@ export default async function Chapter({ params }: { params: Promise<{ id: string
         </section>
       )}
 
-      {/* Reflection (live form) */}
-      <ReflectionForm
-        chapterId={chapter.id}
-        question={reflectionQuestion}
-        initial={existingReflection}
-      />
+      {/* Reflection — live form when signed in, sign-in prompt when guest */}
+      {isAuthenticated ? (
+        <ReflectionForm
+          chapterId={chapter.id}
+          question={reflectionQuestion}
+          initial={existingReflection}
+        />
+      ) : (
+        <section className="bg-secondary-fixed/15 border-2 border-secondary-fixed rounded-xl p-lg flex flex-col gap-md">
+          <header className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>self_improvement</span>
+            <h2 className="font-headline-md text-[22px] text-primary">Your Reflection</h2>
+          </header>
+          <p className="font-body-lg text-[18px] text-on-surface leading-relaxed">{reflectionQuestion}</p>
+          <div className="bg-surface rounded-xl p-md border border-secondary-fixed flex flex-col sm:flex-row items-start sm:items-center justify-between gap-sm">
+            <p className="font-body-md text-on-surface-variant">
+              Sign in to write a reflection and have it saved on your account.
+            </p>
+            <Link
+              href={`/login?next=/chapter/${chapter.id}`}
+              className="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-lg py-sm rounded-full hover:bg-primary transition-colors whitespace-nowrap"
+            >
+              Sign in to save
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Pagination / mark complete */}
       <div className="flex flex-col md:flex-row gap-md mt-lg">

@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/server";
+import { getReadUserId } from "@/utils/supabase/auth";
 
 export default async function Profile() {
   const supabase = await createClient();
-  const userId = '00000000-0000-0000-0000-000000000000'; // Dummy user
+  const { userId, isAuthenticated, email } = await getReadUserId();
 
   const [{ data: stats }, { count: chaptersCompleted }] = await Promise.all([
-    supabase.from('user_stats').select('*').eq('user_id', userId).single(),
-    supabase.from('user_progress').select('*', { count: 'exact', head: true }).eq('user_id', userId).eq('percent_read', 100)
+    supabase.from('user_stats').select('*').eq('user_id', userId).maybeSingle(),
+    supabase.from('user_progress').select('*', { count: 'exact', head: true }).eq('user_id', userId).eq('percent_read', 100),
   ]);
 
   const rank = stats?.current_rank || 'The Seeker';
@@ -19,6 +20,52 @@ export default async function Profile() {
 
   return (
     <main className="max-w-container-max mx-auto px-md py-lg flex flex-col gap-xl">
+
+      {/* Account strip */}
+      <section className="bg-surface-container/50 border border-surface-variant rounded-xl px-lg py-md flex flex-col sm:flex-row items-center justify-between gap-sm text-center sm:text-left">
+        {isAuthenticated ? (
+          <>
+            <div className="flex items-center gap-sm">
+              <span className="material-symbols-outlined text-secondary-container text-[28px]" style={{ fontVariationSettings: "'FILL' 1" }}>account_circle</span>
+              <div>
+                <p className="font-label-caps text-label-caps text-on-surface-variant uppercase">Signed in as</p>
+                <p className="font-body-lg text-primary font-bold">{email}</p>
+              </div>
+            </div>
+            <form action="/auth/signout" method="post">
+              <button
+                type="submit"
+                className="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors inline-flex items-center gap-1 px-md py-sm rounded-full border border-surface-variant hover:border-primary"
+              >
+                <span className="material-symbols-outlined text-[18px]">logout</span> Sign out
+              </button>
+            </form>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center gap-sm">
+              <span className="material-symbols-outlined text-on-surface-variant text-[28px]">person_outline</span>
+              <p className="font-body-md text-on-surface-variant">
+                You're viewing the demo profile. <span className="text-primary font-bold">Sign in</span> to save your own progress.
+              </p>
+            </div>
+            <div className="flex gap-sm">
+              <Link
+                href="/login?mode=signup&next=/profile"
+                className="bg-primary-container text-on-primary-container font-label-caps text-label-caps px-lg py-sm rounded-full hover:bg-primary transition-colors whitespace-nowrap"
+              >
+                Sign up
+              </Link>
+              <Link
+                href="/login?next=/profile"
+                className="text-primary font-label-caps text-label-caps px-md py-sm hover:text-primary-container transition-colors whitespace-nowrap"
+              >
+                Sign in
+              </Link>
+            </div>
+          </>
+        )}
+      </section>
 
       {/* Hero rank */}
       <section className="bg-surface-container rounded-xl p-lg md:p-xl relative overflow-hidden flex flex-col items-center gap-md border-2 border-secondary-fixed shadow-[0_8px_30px_rgba(15,76,92,0.04)]">
