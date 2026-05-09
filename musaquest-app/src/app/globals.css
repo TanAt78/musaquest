@@ -26,18 +26,21 @@
     100% { transform: translateX(100%); }
   }
 
-  /* Slow Ken-Burns drift for the home hero. Wrapped in a media query so users
-     who request reduced motion see a static frame instead of a moving image. */
+  /* Bolder Ken-Burns drift for the home hero. Larger scale + pan than a
+     classic subtle KB so the motion reads at a glance. Wrapped in a media
+     query so users who request reduced motion see a still frame. */
   @keyframes heroPan {
-    0%   { transform: scale(1.04) translate(-1%, 0%); }
-    100% { transform: scale(1.10) translate( 1%, -1%); }
+    0%   { transform: scale(1.00) translate(-3%,  1%); }
+    100% { transform: scale(1.18) translate( 3%, -2%); }
   }
   .hero-ken-burns {
-    transform: scale(1.04);
+    transform: scale(1.00);
+    transform-origin: center;
+    will-change: transform;
   }
   @media (prefers-reduced-motion: no-preference) {
     .hero-ken-burns {
-      animation: heroPan 28s ease-in-out infinite alternate;
+      animation: heroPan 15s ease-in-out infinite alternate;
     }
   }
 
