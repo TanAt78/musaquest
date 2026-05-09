@@ -105,6 +105,42 @@ export default async function EditChapterPage({
           </div>
         </section>
 
+        {/* Teaching layer — added in migration 002 */}
+        <section className="flex flex-col gap-md">
+          <h2 className="font-headline-md text-primary border-b border-surface-variant pb-2">Teaching Layer</h2>
+
+          <div className="flex flex-col gap-1">
+            <label className="font-label-caps text-label-caps text-on-surface" htmlFor="simple_meaning">Simple Meaning</label>
+            <textarea
+              className="px-4 py-3 bg-surface-container rounded-xl border border-surface-variant focus:border-primary focus:outline-none font-body-lg min-h-[80px] leading-relaxed"
+              name="simple_meaning"
+              defaultValue={chapter.simple_meaning || ''}
+              placeholder="One or two sentences in plain language explaining the heart of the chapter."
+            />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="font-label-caps text-label-caps text-on-surface" htmlFor="key_insights">Key Insights</label>
+            <textarea
+              className="px-4 py-3 bg-surface-container rounded-xl border border-surface-variant focus:border-primary focus:outline-none font-body-lg min-h-[120px] leading-relaxed"
+              name="key_insights"
+              defaultValue={(chapter.key_insights ?? []).join('\n')}
+              placeholder={"One insight per line. Example:\nAllah protects whom He wills.\nTrusting Allah can be hard, but His promise is true."}
+            />
+            <p className="font-body-md text-xs text-on-surface-variant mt-1">Each line becomes a separate bullet on the chapter page.</p>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="font-label-caps text-label-caps text-on-surface" htmlFor="reflection_question">Reflection Question</label>
+            <input
+              className="px-4 py-3 bg-surface-container rounded-xl border border-surface-variant focus:border-primary focus:outline-none font-body-lg"
+              name="reflection_question"
+              defaultValue={chapter.reflection_question || ''}
+              placeholder="A single question shown above the reader's reflection box."
+            />
+          </div>
+        </section>
+
         <div className="flex justify-end pt-md border-t border-surface-variant mt-md">
           <button type="submit" className="bg-primary text-on-primary font-label-caps text-label-caps px-xl py-3 rounded-xl hover:bg-primary/90 transition-colors shadow-sm inline-flex items-center gap-2 text-lg">
             <span className="material-symbols-outlined">save</span> Save Chapter

@@ -24,7 +24,11 @@ CREATE TABLE IF NOT EXISTS public.chapters (
   hero_image_url text,
   audio_url text,
   xp_reward integer DEFAULT 100,
-  is_published boolean DEFAULT false
+  is_published boolean DEFAULT false,
+  -- added in migration 002_chapter_content.sql
+  simple_meaning text,
+  key_insights text[],
+  reflection_question text
 );
 
 CREATE TABLE IF NOT EXISTS public.user_progress (

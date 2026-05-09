@@ -4,6 +4,34 @@ import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
+const DUMMY_USER_ID = '00000000-0000-0000-0000-000000000000';
+
+export async function saveReflection(chapterId: number, reflectionText: string) {
+  const text = (reflectionText ?? '').trim();
+  if (!text) return { ok: false as const, error: 'empty' };
+  if (text.length > 2000) return { ok: false as const, error: 'too-long' };
+
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from('user_progress')
+    .upsert(
+      {
+        user_id: DUMMY_USER_ID,
+        chapter_id: chapterId,
+        reflection_text: text,
+      },
+      { onConflict: 'user_id, chapter_id' }
+    );
+
+  if (error) {
+    console.error('Error saving reflection:', error);
+    return { ok: false as const, error: error.message };
+  }
+
+  revalidatePath(`/chapter/${chapterId}`);
+  return { ok: true as const };
+}
+
 export async function markChapterComplete(chapterId: number, formData?: FormData) {
   const supabase = await createClient();
   const userId = '00000000-0000-0000-0000-000000000000'; // Dummy user

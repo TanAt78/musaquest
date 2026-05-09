@@ -23,6 +23,13 @@ export async function updateChapter(chapterId: number, formData: FormData) {
   const surah = formData.get('surah') as string
   const verse_number = formData.get('verse_number') as string
   const xp_reward = parseInt(formData.get('xp_reward') as string, 10)
+  const simple_meaning = formData.get('simple_meaning') as string
+  const reflection_question = formData.get('reflection_question') as string
+  const key_insights_raw = (formData.get('key_insights') as string ?? '').trim()
+  // Each line in the textarea is one bullet; empty lines collapsed.
+  const key_insights = key_insights_raw
+    ? key_insights_raw.split(/\r?\n/).map(s => s.trim()).filter(Boolean)
+    : null
 
   const { error } = await supabase
     .from('chapters')
@@ -36,7 +43,10 @@ export async function updateChapter(chapterId: number, formData: FormData) {
       arabic_transliteration,
       surah,
       verse_number: verse_number ? parseInt(verse_number, 10) : null,
-      xp_reward: isNaN(xp_reward) ? 150 : xp_reward
+      xp_reward: isNaN(xp_reward) ? 150 : xp_reward,
+      simple_meaning: simple_meaning || null,
+      reflection_question: reflection_question || null,
+      key_insights,
     })
     .eq('id', chapterId)
 
