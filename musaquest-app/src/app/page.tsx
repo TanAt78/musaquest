@@ -5,14 +5,11 @@ export default async function Home() {
   const supabase = await createClient();
   const userId = '00000000-0000-0000-0000-000000000000'; // Dummy user
 
-  const [{ data: stats }, { data: chapters }, { data: progress }] = await Promise.all([
-    supabase.from('user_stats').select('*').eq('user_id', userId).single(),
-    supabase.from('chapters').select('id, number, title').order('number', { ascending: true }),
-    supabase.from('user_progress').select('chapter_id, percent_read').eq('user_id', userId),
-  ]);
-
-  const progressMap = new Map<number, number>();
-  progress?.forEach(p => progressMap.set(p.chapter_id, p.percent_read));
+  const { data: stats } = await supabase
+    .from('user_stats')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
 
   const currentStreak = stats?.current_streak_days || 0;
   const bestStreak = stats?.longest_streak_days || 0;
@@ -23,8 +20,22 @@ export default async function Home() {
   const xpUntilNext = Math.max(0, rankMaxXp - totalXp);
   const progressPercent = Math.min(100, Math.round((totalXp / rankMaxXp) * 100));
 
-  // Timeline icons mirror the stories page so the visual language matches
-  const timelineIcons = ['water', 'castle', 'local_fire_department', 'groups', 'stadium', 'auto_fix_high', 'storm', 'water_drop', 'terrain', 'heart_broken', 'landscape', 'stars'];
+  // Fixed historical timeline of Prophet Musa (peace be upon him).
+  // Drawn from the Quranic narrative; ordered chronologically.
+  const musaTimeline = [
+    { label: "Born in Egypt",          icon: "child_friendly" },
+    { label: "Cradle on the Nile",     icon: "water" },
+    { label: "Raised in the Palace",   icon: "castle" },
+    { label: "Flight to Midian",       icon: "directions_walk" },
+    { label: "Years with Shu'ayb",     icon: "agriculture" },
+    { label: "The Burning Bush",       icon: "local_fire_department" },
+    { label: "Confronting Pharaoh",    icon: "shield" },
+    { label: "The Magicians Believe",  icon: "auto_fix_high" },
+    { label: "Signs Upon Egypt",       icon: "storm" },
+    { label: "Parting of the Sea",     icon: "waves" },
+    { label: "Mount Sinai & Tablets",  icon: "terrain" },
+    { label: "Years in the Wilderness", icon: "landscape" },
+  ];
 
   return (
     <main className="max-w-container-max mx-auto px-md py-lg flex flex-col gap-xl">
@@ -52,65 +63,42 @@ export default async function Home() {
         <span className="material-symbols-outlined text-secondary-container text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>favorite</span>
       </div>
 
-      {/* Musa's life timeline — the major events of the story, with the user's progress overlaid */}
+      {/* Life of Musa (peace be upon him) — fixed historical timeline drawn from the Quranic narrative */}
       <section className="bg-surface-container/40 border border-surface-variant rounded-xl p-md md:p-lg overflow-hidden">
-        <header className="flex items-center justify-between mb-md gap-md">
-          <h2 className="font-headline-md text-[20px] md:text-[22px] text-primary flex items-center gap-2">
-            <span className="material-symbols-outlined text-secondary-container" style={{ fontVariationSettings: "'FILL' 1" }}>route</span>
-            Musa's Journey
-          </h2>
+        <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-md gap-1 sm:gap-md">
+          <div>
+            <h2 className="font-headline-md text-[20px] md:text-[22px] text-primary flex items-center gap-2">
+              <span className="material-symbols-outlined text-secondary-container" style={{ fontVariationSettings: "'FILL' 1" }}>route</span>
+              The Life of Musa
+            </h2>
+            <p className="font-label-caps text-label-caps text-on-surface-variant mt-1">peace be upon him · twelve milestones from the Quran</p>
+          </div>
           <Link href="/stories" className="font-label-caps text-label-caps text-primary hover:text-primary-container transition-colors whitespace-nowrap">
-            View all chapters
+            Read the chapters
           </Link>
         </header>
 
         <div className="relative overflow-x-auto pb-3 -mx-md px-md">
           <ol className="relative flex items-start gap-0 min-w-max">
-            {chapters?.map((chapter, idx) => {
-              const percentRead = progressMap.get(chapter.id) ?? 0;
-              const isCompleted = percentRead === 100;
-              const isInProgress = percentRead > 0 && percentRead < 100;
-              const prevCompleted = idx === 0 || progressMap.get(chapters[idx - 1].id) === 100;
-              const isLocked = !isCompleted && !isInProgress && !prevCompleted;
-              const icon = timelineIcons[idx % timelineIcons.length];
-
-              const nodeClasses = isCompleted
-                ? 'bg-tertiary-container text-on-tertiary-container'
-                : isInProgress
-                ? 'bg-primary-container text-on-primary-container ring-4 ring-primary-fixed/40'
-                : isLocked
-                ? 'bg-surface-container text-on-surface-variant opacity-60'
-                : 'bg-surface text-primary border-2 border-primary-fixed-dim';
-
-              return (
-                <li key={chapter.id} className="flex flex-col items-center w-[88px] flex-shrink-0 relative">
-                  {/* Connector to next node (drawn as a sibling segment so it sits between nodes) */}
-                  {idx < (chapters?.length ?? 0) - 1 && (
-                    <div
-                      aria-hidden="true"
-                      className={`absolute top-[26px] left-[calc(50%+24px)] right-[calc(-50%+24px)] h-0.5 ${
-                        isCompleted ? 'bg-tertiary-container/60' : 'bg-surface-variant'
-                      }`}
-                    />
-                  )}
-                  <Link
-                    href={isLocked ? '#' : `/chapter/${chapter.id}`}
-                    aria-disabled={isLocked}
-                    className={`relative z-10 group ${isLocked ? 'pointer-events-none' : ''}`}
-                  >
-                    <div className={`w-[52px] h-[52px] rounded-full border-4 border-surface flex items-center justify-center shadow-sm transition-transform group-hover:scale-110 ${nodeClasses}`}>
-                      <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>
-                        {isLocked ? 'lock' : icon}
-                      </span>
-                    </div>
-                  </Link>
-                  <span className="font-label-caps text-label-caps text-on-surface-variant mt-2">Ch {chapter.number}</span>
-                  <span className="font-body-md text-[11px] leading-tight text-on-surface text-center mt-1 line-clamp-2 px-1 max-w-[80px]">
-                    {chapter.title}
+            {musaTimeline.map((event, idx) => (
+              <li key={idx} className="flex flex-col items-center w-[92px] flex-shrink-0 relative">
+                {idx < musaTimeline.length - 1 && (
+                  <div
+                    aria-hidden="true"
+                    className="absolute top-[26px] left-[calc(50%+24px)] right-[calc(-50%+24px)] h-0.5 bg-primary-fixed-dim/60"
+                  />
+                )}
+                <div className="relative z-10 w-[52px] h-[52px] rounded-full bg-primary-container text-on-primary-container border-4 border-surface flex items-center justify-center shadow-sm">
+                  <span className="material-symbols-outlined text-[22px]" style={{ fontVariationSettings: "'FILL' 1" }}>
+                    {event.icon}
                   </span>
-                </li>
-              );
-            })}
+                </div>
+                <span className="font-label-caps text-label-caps text-on-surface-variant mt-2">{idx + 1}</span>
+                <span className="font-body-md text-[11px] leading-tight text-on-surface text-center mt-1 line-clamp-2 px-1 max-w-[84px]">
+                  {event.label}
+                </span>
+              </li>
+            ))}
           </ol>
         </div>
       </section>
